@@ -6,7 +6,7 @@
     "Gabriel Izaias <gabriel.izaias@gmail.com>"
   ],
   "description": "A jQuery plugin that transforms URLs in text into HTML <a> elements.",
-  "main": "src/urlToLink.js",
+  "main": "dist/urlToLink.js",
   "moduleType": [
     "amd"
   ],
