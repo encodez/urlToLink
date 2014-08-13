@@ -1,7 +1,12 @@
 var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     rename = require('gulp-rename'),
-    bump = require('gulp-bump')
+    bump = require('gulp-bump'),
+    jsons = [
+      './package.json',
+      './urlToLink.jquery.json',
+      './bower.json'
+    ]
 
 gulp.task('compress', function () {
   "use strict";
@@ -13,19 +18,15 @@ gulp.task('compress', function () {
 
 gulp.task('bump', function (params) {
   "use strict";
-  gulp.src([
-    './package.json',
-    './urlToLink.jquery.json'
-  ]).pipe(bump())
+  gulp.src(jsons)
+    .pipe(bump())
     .pipe(gulp.dest('./'))
 })
 
 gulp.task('bump:minor', function () {
   "use strict";
-  gulp.src([
-    './package.json',
-    './urlToLink.jquery.json'
-  ]).pipe(bump({
+  gulp.src(jsons)
+    .pipe(bump({
       type : 'minor'
     }))
     .pipe(gulp.dest('./'))
@@ -33,11 +34,8 @@ gulp.task('bump:minor', function () {
 
 gulp.task('bump:major', function () {
   "use strict";
-  gulp.src([
-    './package.json',
-    './urlToLink.jquery.json',
-    './bower.json'
-  ]).pipe(bump({
+  gulp.src(jsons)
+    .pipe(bump({
       type : 'major'
     }))
     .pipe(gulp.dest('./'))
