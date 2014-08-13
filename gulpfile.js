@@ -2,6 +2,7 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     rename = require('gulp-rename'),
     bump = require('gulp-bump'),
+    jasmine = require('gulp-jasmine'),
     jsons = [
       './package.json',
       './urlToLink.jquery.json',
@@ -39,6 +40,12 @@ gulp.task('bump:major', function () {
       type : 'major'
     }))
     .pipe(gulp.dest('./'))
+})
+
+gulp.task('jasmine', function () {
+  "use strict";
+  gulp.src('./test/spec/urlToLink.js')
+    .pipe(jasmine())
 })
 
 gulp.task('default', function () {
