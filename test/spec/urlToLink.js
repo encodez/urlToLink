@@ -1,3 +1,5 @@
+var urlToLink = new urlToLink();
+
 describe('URL matching RegEx', function(){
 
   // See https://mathiasbynens.be/demo/url-regex

@@ -5,7 +5,7 @@
 
   }
 
-  urlToLink.parse = function(str) {
+  urlToLink.prototype.parse = function(str) {
     return str;
   }
 
