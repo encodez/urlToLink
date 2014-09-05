@@ -1,6 +1,6 @@
 var urlToLink = new urlToLink();
 
-describe('URL matching RegEx', function(){
+  describe('URL matching RegEx', function(){
 
   // See https://mathiasbynens.be/demo/url-regex
   it('should match the URLs', function(){
@@ -82,5 +82,13 @@ describe('URL matching RegEx', function(){
     expect(urlToLink.parse('http://.www.foo.bar./')).not.toBe('<a href="http://.www.foo.bar./">http://.www.foo.bar./</a>')
     expect(urlToLink.parse('http://10.1.1.1')).not.toBe('<a href="http://10.1.1.1">http://10.1.1.1</a>')
     expect(urlToLink.parse('http://10.1.1.254')).not.toBe('<a href="http://10.1.1.254">http://10.1.1.254</a>')
+  })
+
+  it('should match URLs with text', function() {
+    expect(urlToLink.parse('This is an example http://example.com')).toBe('This is an example <a href="http://example.com">http://example.com</a>')
+  })
+
+  it('should match multiple URLs', function() {
+    expect('This text has multiple URLs http://google.com and also http://bing.com').toBe('This text has multiple URLs <a href="http://google.com">http://google.com</a> and also <a href="http://bing.com">http://bing.com</a>')
   })
 })
