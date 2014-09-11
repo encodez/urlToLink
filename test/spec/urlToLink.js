@@ -38,7 +38,6 @@ var urlToLink = new urlToLink();
     expect(urlToLink.parse('http://-.~_!$&\'()*+,;=:%40:80%2f::::::@example.com')).toBe('<a href="http://-.~_!$&\'()*+,;=:%40:80%2f::::::@example.com">http://-.~_!$&\'()*+,;=:%40:80%2f::::::@example.com</a>')
     expect(urlToLink.parse('http://1337.net')).toBe('<a href="http://1337.net">http://1337.net</a>')
     expect(urlToLink.parse('http://a.b-c.de')).toBe('<a href="http://a.b-c.de">http://a.b-c.de</a>')
-    expect(urlToLink.parse('http://223.255.255.254')).toBe('<a href="http://223.255.255.254">http://223.255.255.254</a>')
   })
 
   // See https://mathiasbynens.be/demo/url-regex
@@ -67,7 +66,6 @@ var urlToLink = new urlToLink();
     expect(urlToLink.parse('http://foo.bar/foo(bar)baz quux')).not.toBe('<a href="http://foo.bar/foo(bar)baz quux">http://foo.bar/foo(bar)baz quux</a>')
     expect(urlToLink.parse('ftps://foo.bar/')).not.toBe('<a href="ftps://foo.bar/">ftps://foo.bar/</a>')
     expect(urlToLink.parse('http://-error-.invalid/')).not.toBe('<a href="http://-error-.invalid/">http://-error-.invalid/</a>')
-    expect(urlToLink.parse('http://a.b--c.de/')).not.toBe('<a href="http://a.b--c.de/">http://a.b--c.de/</a>')
     expect(urlToLink.parse('http://-a.b.co')).not.toBe('<a href="http://-a.b.co">http://-a.b.co</a>')
     expect(urlToLink.parse('http://a.b-.co')).not.toBe('<a href="http://a.b-.co">http://a.b-.co</a>')
     expect(urlToLink.parse('http://0.0.0.0')).not.toBe('<a href="http://0.0.0.0">http://0.0.0.0</a>')
