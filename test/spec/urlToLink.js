@@ -1,6 +1,6 @@
 var urlToLink = new urlToLink();
 
-  describe('URL matching RegEx', function(){
+describe('URL matching RegEx', function(){
 
   // See https://mathiasbynens.be/demo/url-regex
   it('should match the URLs', function(){
@@ -87,6 +87,6 @@ var urlToLink = new urlToLink();
   })
 
   it('should match multiple URLs', function() {
-    expect('This text has multiple URLs http://google.com and also http://bing.com').toBe('This text has multiple URLs <a href="http://google.com">http://google.com</a> and also <a href="http://bing.com">http://bing.com</a>')
+    expect(urlToLink.parse('This text has multiple URLs http://google.com and also http://bing.com')).toBe('This text has multiple URLs <a href="http://google.com">http://google.com</a> and also <a href="http://bing.com">http://bing.com</a>')
   })
 })
