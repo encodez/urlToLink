@@ -1,46 +1,21 @@
-<!DOCTYPE html>
-<html>
-<meta charset=utf-8>
-<title>URL To Link</title>
-<style>
-    table { width: 400px; }
-    th { text-align: right; }
-</style>
-<h1>jQuery urlToLink Example</h1>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Jasmine Spec Runner</title>
+  <link rel="stylesheet" href="../bower_components/jasmine/lib/jasmine-core/jasmine.css">
+</head>
+<body>
+  <div id="sandbox" style="overflow:hidden; height:1px;"></div>
+  <script src="../bower_components/jasmine/lib/jasmine-core/jasmine.js"></script>
+  <script src="../bower_components/jasmine/lib/jasmine-core/jasmine-html.js"></script>
+  <script src="../bower_components/jasmine/lib/jasmine-core/boot.js"></script>
 
-<table border="1" cellpadding="5">
-    <tr>
-        <th>With http://</th>
-        <td class="url-to-link">http://google.com</td>
-    </tr>
-    <tr>
-        <th>Without http://</th>
-        <td class="url-to-link">google.com</td>
-    </tr>
-    <tr>
-        <th>With <i>target:_blank</i></th>
-        <td class="blank">http://google.com</td>
-    </tr>
-    <tr>
-        <th>Compressed with "&hellip;"</th>
-        <td class="compressed">https://github.com/gabrielizaias/urlToLink/issues</td>
-    </tr>
-</table>
+  <!-- Source -->
+  <script src="../src/urlToLink.js"></script>
 
-<p>This should be a link anyway (without plugin): <a href="http://example.com">http://example.com</a></p>
-<p>This should <i>not</i> be a link: http://loremipsum.com </p>
+  <!-- Spec -->
+  <script src="spec/urlToLink.js"></script>
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="../jquery.urlToLink.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){
-    $('a').bind('click', function(e){
-        e.preventDefault();
-        alert('CLICK!');
-    });
-
-    $('.url-to-link').urlToLink();
-    $('.blank').urlToLink({ target : '_blank' });
-    $('.compressed').urlToLink({ compressTo : 35 });
-});
-</script>
+</body>
+</html>
