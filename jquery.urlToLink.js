@@ -41,7 +41,7 @@
         return this.each(function () {
             $(this).html($(this).html().replace(
                 linkMatchingRegEx,
-                function (match, contents, offset, s) {                    
+                function (match, contents, offset, s) {
                     var href = match,
                         linkText = '',
                         lengthToSplit = 0;
@@ -63,10 +63,10 @@
                     // An option added for shortning the text value displayed in beteween anchor tag
                     // to trim down to domain name level
                     // still the hyperlink will point to the full url
-                    // example : 
-                    //      the text for following URL 
+                    // example :
+                    //      the text for following URL
                     //      https://github.com/encodez/urlToLink/blob/master/jquery.urlToLink.js
-                    //      will be converted to "github.com" instead of the long line                    
+                    //      will be converted to "github.com" instead of the long line
                     if (options.domainOnly) {
                         var breakPoint = -1;
                         if (linkText.indexOf('http') > -1) {
@@ -78,7 +78,7 @@
                         else
                             breakPoint = linkText.indexOf('/');
 
-                        if (breakPoint > 3) 
+                        if (breakPoint > 3)
                             linkText = linkText.substring(0, breakPoint);
                     }
 
@@ -97,6 +97,6 @@
         // Link target
         target : '_self',
         // Text to add when compressedTo is set
-        compressWith: '&hellip;'        
+        compressWith: '&hellip;'
     }
 })(jQuery)
