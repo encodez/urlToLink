@@ -53,17 +53,12 @@
 
                     if (options.compressTo) {
                         if (href.length > options.compressTo) {
-                            lengthToSplit = (options.compressTo - options.compressWith.length) / 2                        
+                            lengthToSplit = (options.compressTo - options.compressWith.length) / 2
                             linkText = href.substring(0, lengthToSplit) +
                                         options.compressWith +
                                         href.slice(-lengthToSplit)
                         }
                     }
-
-                    // A fix added for url starting with non http which caused link to resolve to the current
-                    // domain the user in
-                    if (!options.removeHttp && match.indexOf('http') == -1)
-                        match = 'http://' + match;
 
                     // An option added for shortning the text value displayed in beteween anchor tag
                     // to trim down to domain name level
@@ -76,8 +71,8 @@
                         var breakPoint = -1;
                         if (linkText.indexOf('http') > -1) {
                                 var firstSlash = linkText.indexOf('/');
-                                var thirdSlash = firstSlash + 2 + linkText.substring(firstSlash+2).indexOf('/');
-                                if (thirdSlash > (firstSlash+2))
+                                var thirdSlash = firstSlash + 2 + linkText.substring(firstSlash + 2).indexOf('/');
+                                if (thirdSlash > (firstSlash + 2))
                                     breakPoint = thirdSlash;
                         }
                         else
@@ -87,12 +82,7 @@
                             linkText = linkText.substring(0, breakPoint);
                     }
 
-                    // no option added as attribute for anchor tag
-                    var rel = "";
-                    if (options.nofollow)
-                        rel = 'rel="nofollow"';
-
-                    return ' <a ' + rel + ' href="' + match + '" title="' + match + '" target="' + options.target + '">' + linkText + '</a>'
+                    return ' <a href="' + match + '" title="' + match + '" target="' + options.target + '">' + linkText + '</a>'
                 }
             ))
         });
@@ -102,13 +92,11 @@
      * Default configuration
      */
     $.fn.urlToLink.defaults = {
-        // Link target
-        target : '_self',        
-        // Text to add when compressedTo is set
-        compressWith: '&hellip;',
         // Trim down the text within anchor to domain level
         domainOnly: true,
-        // nofollow
-        nofollow: false
+        // Link target
+        target : '_self',
+        // Text to add when compressedTo is set
+        compressWith: '&hellip;'        
     }
 })(jQuery)
