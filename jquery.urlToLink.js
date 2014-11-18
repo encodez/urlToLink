@@ -82,7 +82,12 @@
                             linkText = linkText.substring(0, breakPoint);
                     }
 
-                    return ' <a href="' + match + '" title="' + match + '" target="' + options.target + '">' + linkText + '</a>'
+                    // nofollow option added as attribute for anchor tag
+                    var rel = "";
+                    if (options.nofollow)
+                        rel = 'rel="nofollow"';
+
+                    return ' <a ' + rel + ' href="' + match + '" title="' + match + '" target="' + options.target + '">' + linkText + '</a>'
                 }
             ))
         });
@@ -94,6 +99,8 @@
     $.fn.urlToLink.defaults = {
         // Trim down the text within anchor to domain level
         domainOnly: true,
+        // nofollow
+        nofollow: true,
         // Link target
         target : '_self',
         // Text to add when compressedTo is set
