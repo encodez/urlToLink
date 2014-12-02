@@ -44,12 +44,14 @@
                 function (match, contents, offset, s) {
                     var href = match,
                         linkText = '',
+                        rel = '',
                         lengthToSplit = 0;
 
-                    if (options.removeHttp)
+                    if (options.removeHttp) {
                         href = href.replace("http://", "").replace("https://", "")
+                    }
 
-                    linkText = href
+                    linkText = href;
 
                     if (options.compressTo) {
                         if (href.length > options.compressTo) {
@@ -60,13 +62,6 @@
                         }
                     }
 
-                    // An option added for shortning the text value displayed in beteween anchor tag
-                    // to trim down to domain name level
-                    // still the hyperlink will point to the full url
-                    // example :
-                    //      the text for following URL
-                    //      https://github.com/encodez/urlToLink/blob/master/jquery.urlToLink.js
-                    //      will be converted to "github.com" instead of the long line
                     if (options.domainOnly) {
                         var breakPoint = -1;
                         if (linkText.indexOf('http') > -1) {
@@ -82,12 +77,11 @@
                             linkText = linkText.substring(0, breakPoint);
                     }
 
-                    // nofollow option added as attribute for anchor tag
-                    var rel = "";
-                    if (options.nofollow)
-                        rel = 'rel="nofollow"';
+                    if (options.nofollow) {
+                        rel = 'nofollow';
+                    }
 
-                    return ' <a ' + rel + ' href="' + match + '" title="' + match + '" target="' + options.target + '">' + linkText + '</a>'
+                    return ' <a href="' + match + '" title="' + match + '" target="' + options.target + '" rel="' + rel + '">' + linkText + '</a>';
                 }
             ))
         });
